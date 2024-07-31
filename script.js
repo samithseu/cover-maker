@@ -1,83 +1,89 @@
-// Query selectors
-const coverContainer = document.querySelector(".cover-container");
-
-const schoolInput = document.querySelector("#school");
-const gradeInput = document.querySelector("#grade");
-const booksInput = document.querySelector("#book");
-const nameInput = document.querySelector("#name");
-const yearInput = document.querySelector("#year");
-const borderInput = document.querySelector("#border-type");
-
-const btnMake = document.querySelector(".btn-make");
-const btnClear = document.querySelector(".btn-clear");
-const btnPrint = document.querySelector(".btn-print");
-
-// function
-const checkValue = (element) => {
-  let result = false;
-  if (element.value != "") {
-    result = true;
-  }
-  return result;
-};
-
-// Button make
-let school,
-  grade,
-  name,
-  year,
-  border = "";
-let subjects = [];
-
-btnMake.addEventListener("click", () => {
-  if (
-    checkValue(schoolInput) &&
-    checkValue(gradeInput) &&
-    checkValue(booksInput) &&
-    checkValue(nameInput) &&
-    checkValue(yearInput) &&
-    checkValue(borderInput)
-  ) {
-    school = schoolInput.value;
-    grade = gradeInput.value;
-    subjects = booksInput.value.split(",");
-    name = nameInput.value;
-    year = yearInput.value;
-    border = borderInput.value;
-
-    coverContainer.innerHTML = "";
-    for (let i = 0; i < subjects.length; i++) {
-      coverContainer.innerHTML += `
-        <div class="cover">
-        <img src="img/${border}" alt="Frames" class="absolute" />
-        <h4>${school}</h4>
-        <h4>ថ្នាក់ទី : <span>${grade}</span></h4>
-        <h4>សៀវភៅ : <span>${subjects[i]}</span></h4>
-        <h4>ឈ្មោះ : <span>${name}</span></h4>
-        <h4>ឆ្នាំសិក្សា : <span>${year}</span></h4>
-      </div>`;
-    }
-  } else {
-    alert("All inputs must be filled!");
-  }
+const app = Vue.createApp({
+  data() {
+    return {
+      contents: "",
+      school: "",
+      grade: "",
+      subjects: "",
+      name: "",
+      year: "",
+      fm: "",
+      frames: [
+        { id: 1, value: "frame-1.svg", label: "ប្រភេទ 1" },
+        { id: 2, value: "frame-2.png", label: "ប្រភេទ 2" },
+        { id: 3, value: "frame-3.png", label: "ប្រភេទ 3" },
+        { id: 4, value: "frame-4.png", label: "ប្រភេទ 4" },
+        { id: 5, value: "frame-5.png", label: "ប្រភេទ 5" },
+        { id: 6, value: "frame-6.png", label: "ប្រភេទ 6" },
+        { id: 7, value: "frame-7.png", label: "ប្រភេទ 7" },
+        { id: 8, value: "frame-8.png", label: "ប្រភេទ 8" },
+        { id: 9, value: "frame-9.png", label: "ប្រភេទ 9" },
+        { id: 10, value: "frame-10.png", label: "ប្រភេទ 10" },
+      ],
+    };
+  },
+  computed: {
+    allsubjects: {
+      get() {
+        return this.subjects.split(",");
+      },
+    },
+    main_school: {
+      get() {
+        return this.school;
+      },
+      set(newValue) {
+        this.school = newValue;
+      },
+    },
+  },
+  methods: {
+    printResult() {
+      window.print();
+    },
+    clearResult() {
+      this.school = "";
+      this.grade = "";
+      this.subjects = "";
+      this.name = "";
+      this.year = "";
+      this.fm = "";
+      this.contents = "";
+    },
+    checkinputs() {
+      if (
+        this.school == "" ||
+        this.grade == "" ||
+        this.subjects == "" ||
+        this.name == "" ||
+        this.year == "" ||
+        this.fm == ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    showResult() {
+      this.contents = "";
+      this.allsubjects.forEach((sub) => {
+        this.contents +=
+          "<div class='cover'><img src='img/" +
+          this.fm +
+          "' alt='Frames' class='absolute' /><h4>" +
+          this.school +
+          "</h4><h4>ថ្នាក់ទី: <span>" +
+          this.grade +
+          "</span></h4><h4>សៀវភៅ: <span>" +
+          sub +
+          "</span></h4><h4>ឈ្មោះ: <span>" +
+          this.name +
+          "</span></h4><h4>ឆ្នាំសិក្សា: <span>" +
+          this.year +
+          "</span></h4></div>";
+      });
+    },
+  },
 });
 
-// Button clear
-btnClear.addEventListener("click", () => {
-  schoolInput.value =
-    gradeInput.value =
-    booksInput.value =
-    nameInput.value =
-    yearInput.value =
-      "";
-  coverContainer.innerHTML = "";
-});
-
-// Button print
-btnPrint.addEventListener("click", () => {
-  if (subjects.length > 0) {
-    window.print();
-  } else {
-    alert("No books inserted!");
-  }
-});
+app.mount("#app");
