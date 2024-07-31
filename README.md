@@ -7,3 +7,4 @@ I'm kinda tired of creating the notebook cover for my brother using Microsoft Wo
 - `HTML`
 - `CSS`
 - `JavaScript`
+- `Vue.JS`
