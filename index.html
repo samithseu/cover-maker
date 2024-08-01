@@ -92,6 +92,9 @@
             id="border-type"
             v-model="fm"
           >
+            <option value="" hidden disabled selected>
+              ជ្រើសរើសប្រភេទស៊ុម...
+            </option>
             <option
               v-for="frame in frames"
               :key="frame.id"
