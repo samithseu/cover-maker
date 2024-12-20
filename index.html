@@ -39,6 +39,7 @@
         <div class="input-group">
           <label for="school">សាលារៀន </label>
           <input
+            @change="showResult"
             type="text"
             placeholder="បញ្ចូលឈ្មោះសាលា (ឧ. វិទ្យាល័យកំពង់ស្ពឺ)"
             name="school"
@@ -49,6 +50,7 @@
         <div class="input-group">
           <label for="grade">ថ្នាក់ </label>
           <input
+            @change="showResult"
             type="text"
             placeholder="បញ្ចូលឈ្មោះថ្នាក់ (ឧ. 9E)"
             name="grade"
@@ -59,6 +61,7 @@
         <div class="input-group">
           <label for="book">មុខវិជ្ជា </label>
           <textarea
+            @change="showResult"
             name="book"
             placeholder="បញ្ចូលមុខវិជ្ជា (ឧ. ភាសាខ្មែរ,គណិតវិទ្យា,រូបវិទ្យា)"
             id="book"
@@ -68,6 +71,7 @@
         <div class="input-group">
           <label for="name">ឈ្មោះ </label>
           <input
+            @change="showResult"
             type="text"
             placeholder="បញ្ចូលឈ្មោះផ្ទាល់ខ្លួន (ឧ. ស៊ឺ ដេវីត)"
             id="name"
@@ -77,6 +81,7 @@
         <div class="input-group">
           <label for="year">ឆ្នាំសិក្សា</label>
           <input
+            @change="showResult"
             type="text"
             placeholder="បញ្ចូលឆ្នាំសិក្សា (ឧ. ២០២២ - ២០២៣)"
             id="year"

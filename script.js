@@ -7,7 +7,7 @@ const app = Vue.createApp({
       subjects: "",
       name: "",
       year: "",
-      fm: "",
+      fm: "frame-1.svg",
       frames: [
         { id: 1, value: "frame-1.svg", label: "ប្រភេទ 1" },
         { id: 2, value: "frame-2.png", label: "ប្រភេទ 2" },
@@ -47,7 +47,7 @@ const app = Vue.createApp({
       this.subjects = "";
       this.name = "";
       this.year = "";
-      this.fm = "";
+      this.fm = "frame-1.svg";
       this.contents = "";
     },
     checkinputs() {
@@ -71,7 +71,7 @@ const app = Vue.createApp({
           "<div class='cover'><img src='img/" +
           this.fm +
           "' alt='Frames' class='absolute' /><h4>" +
-          this.school +
+          this.main_school +
           "</h4><h4>ថ្នាក់ទី: <span>" +
           this.grade +
           "</span></h4><h4>សៀវភៅ: <span>" +
