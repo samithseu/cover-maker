@@ -2,10 +2,14 @@
   font-family: "KhmerMool1";
   src: url("./fonts/KHMMOOL1.ttf");
 }
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/inter-varfont.ttf");
+}
 :root {
   --width: 14.85;
   --height: 21;
-  --kh-font: "KhmerMool1";
+  --kh-font: "Inter", "KhmerMool1";
   --width-size: 540px;
 }
 *,
